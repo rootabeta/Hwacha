@@ -1,7 +1,7 @@
 // Hello, world
-console.debug("Hellfire CIWS Online");
+console.debug("Hwacha CIWS Online");
 
-// https://www.nationstates.net/page=blank?display=hellfire&template-overall=none
+// https://www.nationstates.net/page=blank?display=hwacha&template-overall=none
 // Will require script generation tags according to NS rules
 // window.open("nation=volstrostia", '_blank').focus();
 
@@ -18,19 +18,19 @@ console.debug("Hellfire CIWS Online");
  * FUCK EVERYONE INVOLVED IN THE MURDER OF HTML-BASED SCRIPTS
  */
 
-// We are on the Hellfire control panel
-if (document.location.href.includes("page=blank?program=hellfire")) { 
+// We are on the Hwacha control panel
+if (document.location.href.includes("page=blank?program=hwacha")) { 
 	initialize_control_panel();
 }
 
 // We are on a target nation
-else if (document.location.href.includes("hellfire-target=true")) { 
+else if (document.location.href.includes("hwacha-target=true")) { 
 	console.debug("Found target nation");
 }
 
 // We are on a random page
 else { 
 	let warning = document.createElement('div');
-	warning.innerHTML = '<center><b>Hellfire is enabled! Click <a href="page=blank?program=hellfire&template-overall=none">here</a> to use it.</b></center>';
+	warning.innerHTML = '<center><b>Hwacha is enabled! Click <a href="page=blank?program=hwacha&template-overall=none">here</a> to use it.</b></center>';
 	document.body.prepend(warning)
 }

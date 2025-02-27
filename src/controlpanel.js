@@ -1,12 +1,12 @@
-console.debug("Hellfire CIWS Control System Module Loaded");
+console.debug("Hwacha CIWS Control System Module Loaded");
 
 function initialize_control_panel() { 
 	// Create top-level control panel
 	let page = document.createElement('div');
 	let banner = document.createElement('h1');
-	banner.innerHTML = 'Hellfire CIWS Control Panel';
+	banner.innerHTML = 'Hwacha CIWS Control Panel';
 
-	page.id = "hellfire";
+	page.id = "hwacha";
 
 	// Create a header row to store configuration options
 	let header = document.createElement('div');
@@ -82,9 +82,9 @@ function arm_system() {
 	let USER = document.getElementById("mainnation").value;
 
 	// Build user agent identification strings
-	let USER_AGENT = `Hellfire/${VERSION} (By: Volstrostia; usedBy: ${USER})`;
+	let USER_AGENT = `Hwacha/${VERSION} (By: Volstrostia; usedBy: ${USER})`;
 	// For generated_by field
-	let USER_URL = `Hellfile_${VERSION}_by_Volstrostia_usedBy_${USER}`; // For chrome
+	let USER_URL = `Hwacha_${VERSION}_by_Volstrostia_usedBy_${USER}`; // For chrome
 
 	console.debug(`User: ${USER}`);
 	console.debug(`User Agent: ${USER_AGENT}`);

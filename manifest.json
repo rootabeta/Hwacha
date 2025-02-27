@@ -1,6 +1,6 @@
 { 
 	"manifest_version": 3,
-	"name": "Hellfire",
+	"name": "Hwacha",
 	"version": "0.0.1",
 	"description": "Another NationStates banscript option",
 	"icons": { 
@@ -15,9 +15,9 @@
 		],
 		"js": [ 
 			"src/apilib.js",
-			"src/hellfirelib.js",
+			"src/hwachalib.js",
 			"src/controlpanel.js",
-			"src/hellfire.js"
+			"src/hwacha.js"
 		]
 	}],
 
@@ -32,7 +32,7 @@
 
 	"browser_specific_settings":{
 		"gecko":{
-				"id":"hellfire@alexfromnationstates",
+				"id":"hwacha@alexfromnationstates",
 				"strict_min_version": "109.0"
 		}
 	}

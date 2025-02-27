@@ -14,10 +14,6 @@ function initialize_control_panel() {
 	subheader.id = "subheader";
 	subheader.textContent = "Awaiting Configuration"; // TODO
 
-	// Create panel for tracking inbound targets
-	let inbounds = document.createElement('div');
-	inbounds.id = "inbounds";
-
 	// Create field to set main nation
 	let main_nation = document.createElement('input');
 	main_nation.id = "mainnation";
@@ -88,9 +84,15 @@ function arm_system() {
 	// Build user agent identification strings
 	let USER_AGENT = `Hellfire/${VERSION} (By: Volstrostia; usedBy: ${USER})`;
 	// For generated_by field
-	let USER_URL = `Hellfile${VERSION}_by_Volstrostia_usedBy_${USER}`; // For chrome
+	let USER_URL = `Hellfile_${VERSION}_by_Volstrostia_usedBy_${USER}`; // For chrome
 
 	console.debug(`User: ${USER}`);
 	console.debug(`User Agent: ${USER_AGENT}`);
 	console.debug(`User URL: ${USER_URL}`);
+
+	// Create panel for tracking inbound targets
+	let inbounds = document.createElement('div');
+	inbounds.id = "inbounds";
+
+	document.body.appendChild(inbounds);
 }

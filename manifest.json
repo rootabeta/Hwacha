@@ -15,6 +15,7 @@
 		],
 		"js": [ 
 			"src/apilib.js",
+			"src/hellfirelib.js",
 			"src/controlpanel.js",
 			"src/hellfire.js"
 		]

@@ -1,6 +1,6 @@
 function get_nations(region) { 
 	fetch(
-		`https://www.nationstates.net/cgi-bin/api.cgi?script=${USER_URL}&region=${current_region}&q=nations`,
+		`https://www.nationstates.net/cgi-bin/api.cgi?script=${USER_URL}&region=${region}&q=nations`,
 		{
 		headers: { 
 			"User-Agent": USER_AGENT
@@ -20,7 +20,7 @@ function get_nations(region) {
 			nations = [];
 		} else { 
 			// Split on nation names
-			nations = nations.split(",");
+			nations = nations.split(":");
 		}
 	});
 }
@@ -28,7 +28,7 @@ function get_nations(region) {
 function get_wanations(region) { 
 	var headers = {};
 	fetch(
-		`https://www.nationstates.net/cgi-bin/api.cgi?script=${USER_URL}&region=${current_region}&q=wanations`,
+		`https://www.nationstates.net/cgi-bin/api.cgi?script=${USER_URL}&region=${region}&q=wanations`,
 		{
 		headers: { 
 			"User-Agent": USER_AGENT
@@ -48,10 +48,12 @@ function get_wanations(region) {
 			wanations = [];
 		} else { 
 			// Split on nation names
-			wanations = wanations.split(":");
+			wanations = wanations.split(",");
 		}
 	});
 }
+
+/* TODO: "Borrow" get officers utils from Railgun caching mechanism for use with IFF */
 
 // Return true/false if nation exists
 function validate_nation(nation) { 

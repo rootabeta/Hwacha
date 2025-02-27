@@ -42,10 +42,16 @@ function initialize_control_panel() {
 	// Attach panel to page
 	let center = document.createElement("center");
 	let split = document.createElement("hr");
+
+	// Create panel for tracking inbound targets
+	let inbounds = document.createElement('div');
+	inbounds.id = "inbounds";
+
 	center.appendChild(banner);
 	center.appendChild(subheader);
 	center.appendChild(split);
 	center.appendChild(page);
+	center.appendChild(inbounds);
 	document.body.appendChild(center);
 
 	confirm_main.onclick = confirm_nation;
@@ -79,20 +85,20 @@ function arm_system() {
 	// Get software version
 	let VERSION = chrome.runtime.getManifest().version;
 	// Get main nation
-	let USER = document.getElementById("mainnation").value;
+	USER = document.getElementById("mainnation").value;
 
 	// Build user agent identification strings
-	let USER_AGENT = `Hwacha/${VERSION} (By: Volstrostia; usedBy: ${USER})`;
+	USER_AGENT = `Hwacha/${VERSION} (By: Volstrostia; usedBy: ${USER})`;
 	// For generated_by field
-	let USER_URL = `Hwacha_${VERSION}_by_Volstrostia_usedBy_${USER}`; // For chrome
+	USER_URL = `Hwacha_${VERSION}_by_Volstrostia_usedBy_${USER}`; // For chrome
 
 	console.debug(`User: ${USER}`);
 	console.debug(`User Agent: ${USER_AGENT}`);
 	console.debug(`User URL: ${USER_URL}`);
 
-	// Create panel for tracking inbound targets
-	let inbounds = document.createElement('div');
-	inbounds.id = "inbounds";
+	console.log("Hwacha activated");
 
-	document.body.appendChild(inbounds);
+	// TODO - Set to API rate limit from config file
+//	window.setInterval(update_inbounds, 650);
+	update_inbounds();
 }

@@ -1,6 +1,11 @@
 // Hello, world
 console.debug("Hwacha CIWS Online");
 
+// Empty init
+var USER = "";
+var USER_AGENT = "";
+var USER_URL = "";
+
 // https://www.nationstates.net/page=blank?display=hwacha&template-overall=none
 // Will require script generation tags according to NS rules
 // window.open("nation=volstrostia", '_blank').focus();
@@ -20,6 +25,7 @@ console.debug("Hwacha CIWS Online");
 
 // We are on the Hwacha control panel
 if (document.location.href.includes("page=blank?program=hwacha")) { 
+	// Launch the control panel system
 	initialize_control_panel();
 }
 

@@ -26,8 +26,9 @@ function get_nations(region) {
 }
 
 function get_wanations(region) { 
+	console.debug(`Web request with UA ${USER_AGENT}`);
 	var headers = {};
-	fetch(
+	return fetch(
 		`https://www.nationstates.net/cgi-bin/api.cgi?script=${USER_URL}&region=${region}&q=wanations`,
 		{
 		headers: { 
@@ -50,7 +51,9 @@ function get_wanations(region) {
 			// Split on nation names
 			wanations = wanations.split(",");
 		}
+		return wanations;
 	});
+
 }
 
 /* TODO: "Borrow" get officers utils from Railgun caching mechanism for use with IFF */

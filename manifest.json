@@ -1,0 +1,40 @@
+{ 
+	"manifest_version": 3,
+	"name": "Hellfire",
+	"version": "0.0.1",
+	"description": "Another NationStates banscript option",
+	"icons": { 
+			"16": "icons/16.png",
+			"48": "icons/48.png",
+			"128": "icons/128.png"
+	},
+
+	"content_scripts": [{
+		"matches": [
+			"https://*.nationstates.net/*"
+		],
+		"js": [ 
+			"src/apilib.js",
+			"src/controlpanel.js",
+			"src/hellfire.js"
+		]
+	}],
+
+	"host_permissions":[
+		"https://*.nationstates.net/*"
+	], 
+
+	"permissions":[
+		"cookies",
+		"storage"
+	],
+
+	"browser_specific_settings":{
+		"gecko":{
+				"id":"hellfire@alexfromnationstates",
+				"strict_min_version": "109.0"
+		}
+	}
+}
+
+

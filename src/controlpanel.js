@@ -2,6 +2,7 @@ console.debug("Hwacha CIWS Control System Module Loaded");
 
 function initialize_control_panel() { 
 	// Create top-level control panel
+	document.title = "Hwacha Control System";
 	let page = document.createElement('div');
 	let banner = document.createElement('h1');
 	banner.innerHTML = 'Hwacha CIWS Control Panel';
@@ -98,7 +99,11 @@ function arm_system() {
 
 	console.log("Hwacha activated");
 
-	// TODO - Set to API rate limit from config file
+	// Load config file from upload and parse, with sane defaults if none specified
+	var config_file = document.getElementById("configfile").files[0];
+	config = parse_toml(config_file);
+	console.log(config);
+
 //	window.setInterval(update_inbounds, 650);
 	update_inbounds();
 }

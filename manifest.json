@@ -21,6 +21,11 @@
 		]
 	}],
 
+	"background": {
+		"scripts": ["src/background.js"],
+		"type": "module"
+	},
+
 	"host_permissions":[
 		"https://*.nationstates.net/*"
 	], 

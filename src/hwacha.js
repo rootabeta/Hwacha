@@ -42,7 +42,6 @@ else if (document.location.href.includes("hwacha-target=true")) {
 	console.debug("Found target nation");
 	let ban_button = document.getElementsByName("ban")[0];
 	if (ban_button) { 
-		document.getElementsByClassName("newtitlename")[0].style.background="red";
 		let warning = document.createElement('div');
 		warning.innerHTML = '<center><b style="color:red">HWACHA HAS LOCKED ONTO THIS TARGET, PRESS SPACE TO FIRE ROCKETS</b></center>';
 		document.body.prepend(warning);
@@ -52,20 +51,12 @@ else if (document.location.href.includes("hwacha-target=true")) {
 			// Click ban button when spacebar is lifted
 			if (event.code == 'Space') {
 				//ban_button.click();
-				chrome.tabs.query({
-					currentWindow: true
-				}).then((tabs) => {
-					for (let tab of tabs) {
-						/*
-						if (tab.id === tabId) {
-							browser.tabs.update(tabId, {
-								active: true
-							});
-						}
-						*/
-						// Log tabs in current window
-						console.debug(tab);
-					}
+				console.debug("Boop!");
+				// Pass message to background script to shift browser focus
+				browser.runtime.sendMessage({
+					"hwacha": "radar_view"
+				}).then(() => {
+					console.log("Focus request sent");
 				});
 			}
 		});

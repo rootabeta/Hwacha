@@ -50,7 +50,7 @@ else if (document.location.href.includes("hwacha-target=true")) {
 		document.addEventListener('keyup', function (event) {
 			// Click ban button when spacebar is lifted
 			if (event.code == 'Space') {
-				//ban_button.click();
+				ban_button.click();
 				console.debug("Boop!");
 				// Pass message to background script to shift browser focus
 				browser.runtime.sendMessage({

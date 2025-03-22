@@ -33,11 +33,33 @@ function make_link(nation) {
 	return `<a href="https://www.nationstates.net/nation=${nation}?hwacha-target=true&template-overall=none&generated_by=${USER_URL}">${nation}</a>`;
 }
 
+// Function to apply the Fisher-Yates Shuffle
+function shuffle(array) {
+
+    // Iterate over the array in reverse order
+    for (let i = array.length - 1; i > 0; i--) {
+
+        // Generate Random Index
+        const j = Math.floor(Math.random() * (i + 1));
+
+        // Swap elements
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 // Use IFF system to parse and display inbound hostiles
 function display_inbounds(inbounds) { 
 	let radar_screen = document.getElementById("inbounds");
+	// Pull original residents from browser memory
+
+	// Clear radar screen for fresh run
 	radar_screen.innerHTML = "";
-	for (var i=0; i<inbounds.length; i++) { 
+	let shuffled_inbounds = shuffle(inbounds);
+
+	for (var i=0; i<shuffled_inbounds.length; i++) { 
+		// If inbound is not in original list, it is an inbound and must be treated as hostile
+		// This rebuilds the target list from scratch every time update_inbounds is called
 		radar_screen.innerHTML += make_link(inbounds[i]) + "<br/>";
 	}
 }
@@ -45,6 +67,7 @@ function display_inbounds(inbounds) {
 /// Update inbounds list with IFF-filtered (WA?) nations
 /// This is the primary tracking system
 function update_inbounds() { 
+	let current_region = document.getElementById("region").value;
 	console.debug(`Fetching inbounds with ${USER_AGENT}`);
 /*	let item = document.createElement("p");
 	item.innerText = "foo";
@@ -52,7 +75,7 @@ function update_inbounds() {
 */
 
 	// TODO: More fixy - allow loading a config file
-	get_wanations("the_brotherhood_of_malice").then((wa_nations) => { 
+	get_wanations(current_region).then((wa_nations) => { 
 		display_inbounds(wa_nations);
 	});
 }

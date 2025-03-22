@@ -25,15 +25,21 @@ function initialize_control_panel() {
 	confirm_main.textContent = "Arm CIWS";
 	confirm_main.id = "confirmmain";
 
+	let region = document.createElement('input');
+	region.id = "region";
+	region.placeholder = "Region";
+
 	// Allow user to upload Brimstone config files
 	// Why reuse the Brimstone file format? Spite!
+	/*
 	let config_file = document.createElement('input');
 	config_file.id = "configfile";
 	config_file.type = "file";
 	config_file.accept = ".toml";
 	config_file.label = "Config File"; 
 
-	header.appendChild(config_file);
+	header.appendChild(config_file);*/
+	header.appendChild(region);
 	header.appendChild(main_nation);
 	header.appendChild(confirm_main);
 
@@ -71,7 +77,12 @@ function confirm_nation() {
 
 		// Lock out main nation and config file upload
 		document.getElementById("mainnation").disabled = true;
-		document.getElementById("configfile").disabled = true;
+//		document.getElementById("configfile").disabled = true;
+
+		// Normalize and lock-out region name - hacky workaround for autohoming
+		let region_name = document.getElementById("region").value.toLowerCase().replace(" ","_");
+		document.getElementById("region").value = region_name;
+		document.getElementById("region").disabled = true;
 
 		// Set subheader
 		document.getElementById("subheader").textContent = ">>> CHANGES LOCKED OUT <<<";
@@ -100,10 +111,10 @@ function arm_system() {
 	console.log("Hwacha activated");
 
 	// Load config file from upload and parse, with sane defaults if none specified
-	var config_file = document.getElementById("configfile").files[0];
-	config = parse_toml(config_file);
-	console.log(config);
+	// var config_file = document.getElementById("configfile").files[0];
+	// config = parse_toml(config_file);
+	// console.log(config);
 
-//	window.setInterval(update_inbounds, 650);
-	update_inbounds();
+	window.setInterval(update_inbounds, 650);
+//	update_inbounds();
 }

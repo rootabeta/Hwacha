@@ -1,5 +1,5 @@
 function get_nations(region) { 
-	fetch(
+	return fetch(
 		`https://www.nationstates.net/cgi-bin/api.cgi?script=${USER_URL}&region=${region}&q=nations`,
 		{
 		headers: { 
@@ -22,6 +22,7 @@ function get_nations(region) {
 			// Split on nation names
 			nations = nations.split(":");
 		}
+		return nations;
 	});
 }
 

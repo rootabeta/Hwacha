@@ -110,11 +110,23 @@ function arm_system() {
 
 	console.log("Hwacha activated");
 
+	let region = document.getElementById("region").value; // Already normalized
+	console.log(`Initializing IFF for ${region}`);
+	get_nations(region).then((nations) => {
+		console.debug("DNK:");
+		console.debug(nations);
+		localStorage.setItem("hwdnk", JSON.stringify(nations));
+	});
+
+	// Spin for one second to clear API rate limit
+	let start = performance.now();
+	while (performance.now() <= start) {};
+
 	// Load config file from upload and parse, with sane defaults if none specified
 	// var config_file = document.getElementById("configfile").files[0];
 	// config = parse_toml(config_file);
 	// console.log(config);
 
+	// Poll the API at regular intervals
 	window.setInterval(update_inbounds, 650);
-//	update_inbounds();
 }

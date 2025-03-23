@@ -52,6 +52,7 @@ function shuffle(array) {
 function display_inbounds(inbounds) { 
 	let radar_screen = document.getElementById("inbounds");
 	// Pull original residents from browser memory
+	let do_not_kill = JSON.parse(localStorage.getItem("hwdnk")) || [];
 
 	// Clear radar screen for fresh run
 	radar_screen.innerHTML = "";
@@ -60,7 +61,9 @@ function display_inbounds(inbounds) {
 	for (var i=0; i<shuffled_inbounds.length; i++) { 
 		// If inbound is not in original list, it is an inbound and must be treated as hostile
 		// This rebuilds the target list from scratch every time update_inbounds is called
-		radar_screen.innerHTML += make_link(inbounds[i]) + "<br/>";
+		if (!do_not_kill.includes(inbounds[i])) { 
+			radar_screen.innerHTML += make_link(inbounds[i]) + "<br/>";
+		}
 	}
 }
 

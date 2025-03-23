@@ -10,6 +10,9 @@ var USER_URL = "";
 // Will require script generation tags according to NS rules
 // window.open("nation=volstrostia", '_blank').focus();
 
+// Will require the user to allow scripts to close tabs and shit
+// TODO: Test on a clean slate!
+
 /* 
  * On launch, go to our launch control center
  * Initialize IFF system a-la Brimstone (maybe add config parser just to be a dick)
@@ -51,8 +54,11 @@ else if (document.location.href.includes("hwacha-target=true")) {
 			// Click ban button when spacebar is lifted
 			if (event.code == 'Space') {
 				ban_button.click();
-				console.debug("Boop!");
+
 				// Pass message to background script to shift browser focus
+				// This isn't generating any additional network requests, and is 
+				// equivalent to just using AHK to shift-tab over, so it
+				// should be fine for us to do
 				browser.runtime.sendMessage({
 					"hwacha": "radar_view"
 				}).then(() => {
@@ -62,7 +68,7 @@ else if (document.location.href.includes("hwacha-target=true")) {
 		});
 	} else { 
 		// No ban button? Useless, close the tab
-		//window.close();
+		window.close();
 	}
 }
 

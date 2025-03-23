@@ -15,8 +15,8 @@
 		],
 		"js": [ 
 			"src/apilib.js",
-			"src/hwachalib.js",
 			"src/controlpanel.js",
+			"src/hwachalib.js",
 			"src/hwacha.js"
 		]
 	}],

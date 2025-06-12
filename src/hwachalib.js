@@ -77,8 +77,13 @@ function update_inbounds() {
 	document.getElementById("inbounds").appendChild(item);
 */
 
-	// TODO: More fixy - allow loading a config file
-	get_wanations(current_region).then((wa_nations) => { 
-		display_inbounds(wa_nations);
-	});
+	if (document.getElementById("waonly").checked) { 
+		get_wanations(current_region).then((wa_nations) => { 
+			display_inbounds(wa_nations);
+		});
+	} else { 
+		get_nations(current_region).then((nations) => { 
+			display_inbounds(nations);
+		});
+	}
 }

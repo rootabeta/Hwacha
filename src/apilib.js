@@ -60,6 +60,7 @@ function get_wanations(region) {
 /* TODO: "Borrow" get officers utils from Railgun caching mechanism for use with IFF */
 
 // Return true/false if nation exists
+// Never got around to API validation, but eh, good enough
 function validate_nation(nation) { 
 	if (nation.length > 3) { 
 		return true;

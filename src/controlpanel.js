@@ -15,6 +15,17 @@ function initialize_control_panel() {
 	subheader.id = "subheader";
 	subheader.textContent = "Awaiting Configuration"; // TODO
 
+	// Create toggle for practice mode
+	let wa_only = document.createElement('input');
+	wa_only.id = "waonly";
+	wa_only.type = "checkbox";
+	wa_only.checked = "true";
+
+	let wa_label = document.createElement('label');
+	wa_label.id = "waonly_label";
+	wa_label.for = "waonly";
+	wa_label.innerText = "WA Only";
+
 	// Create field to set main nation
 	let main_nation = document.createElement('input');
 	main_nation.id = "mainnation";
@@ -39,6 +50,8 @@ function initialize_control_panel() {
 	config_file.label = "Config File"; 
 
 	header.appendChild(config_file);*/
+	header.appendChild(wa_only);
+	header.appendChild(wa_label);
 	header.appendChild(region);
 	header.appendChild(main_nation);
 	header.appendChild(confirm_main);
@@ -77,6 +90,7 @@ function confirm_nation() {
 
 		// Lock out main nation and config file upload
 		document.getElementById("mainnation").disabled = true;
+		document.getElementById("waonly").disabled = true;
 //		document.getElementById("configfile").disabled = true;
 
 		// Normalize and lock-out region name - hacky workaround for autohoming
